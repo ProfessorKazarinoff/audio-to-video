@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+.vscode/
+ffmpeg_path.py
+*.mp3
+*.mp4
+*.png 
+gooey_config.json
