@@ -20,6 +20,8 @@ Run the Gooey app:
 python run.py
 ```
 
+ > Make sure there are not spaces in the file path's of the .mp3 or image or their parent directories
+
 If this doesn't work, the raw ffmpeg command is below:
 
 ```text
