@@ -9,6 +9,7 @@ into a .mp4 video
 
 from pathlib import Path
 import subprocess
+import platform
 
 from gooey import Gooey, GooeyParser
 
@@ -41,14 +42,17 @@ def main():
     # construct output .mp4 file path
     mp4_outfile_name = str(mp3_to_convert_Path.stem) + ".mp4"
     mp4_outfile_Path = Path(args.output_dir, mp4_outfile_name)
+    mp4_outfile_Path.unlink(missing_ok=True) # delete the .mp4 file if it's there
 
     # Determine ffmpeg executable file path
     """
     where ffmpeg
     """
-    ffmpeg_path_bytes = subprocess.check_output(
-        "where ffmpeg", shell=True
-    )  # returns bytes
+    if platform.system() == 'Windows':
+        ffmpeg_path_bytes = subprocess.check_output("where ffmpeg", shell=True)  # returns bytes
+    elif platform.system() == 'Linux':
+        ffmpeg_path_bytes = subprocess.check_output("which ffmpeg", shell=True) 
+
     ffmpeg_executable_path = ffmpeg_path_bytes.decode().strip()
     print("ffmpeg_executable_path: ", ffmpeg_executable_path)
 
