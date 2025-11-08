@@ -25,5 +25,5 @@ python run.py
 If this doesn't work, the raw ffmpeg command is below:
 
 ```text
-ffmpeg -loop 1 -i image.png -i audio.mp3 -c:a copy -c:v libx264 -shortest video.mp4
+ffmpeg -loop 1 -i image.png -i audio.mp3 -c:v libx264 -tune stillimage -preset medium -crf 23 -c:a aac -b:a 128k -shortest video.mp4
 ```
